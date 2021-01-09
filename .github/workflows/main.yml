@@ -16,6 +16,12 @@ jobs:
       
       - name: Publish the project
         run: dotnet publish MyWebsite/MyWebsite.csproj -c Release -o release --nologo
+        
+      - name: Change base-tag in index.html from / to repo name
+        run: sed -i 's/<base href="\/" \/>/<base href="\/my-site\/" \/>/g' release/wwwroot/index.html
+      
+      - name: Add .nojekyll file
+        run: touch release/wwwroot/.nojekyll
       
       - name: Commit wwwroot to Github Page
         uses: JamesIves/github-pages-deploy-action@3.7.1
