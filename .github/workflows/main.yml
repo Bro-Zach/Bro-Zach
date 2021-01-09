@@ -15,7 +15,7 @@ jobs:
           dotnet-version: 3.1
       
       - name: Publish the project
-        run: dotnet publish MyWebsite.csproj -c Release -o release --nologo
+        run: dotnet publish MyWebsite/MyWebsite.csproj -c Release -o release --nologo
       
       - name: Commit wwwroot to Github Page
         uses: JamesIves/github-pages-deploy-action@3.7.1
